@@ -4,8 +4,8 @@ import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 
 public class TrafficLights extends Actor{
-	private static final int GREEN_COUNT = 100;
-	private static final int YELLOW_COUNT = 175;
+	private static final int GREEN_COUNT = 200;
+	private static final int YELLOW_COUNT = 25;
 	private static final int RED_COUNT = GREEN_COUNT + YELLOW_COUNT;
 	private Color color;
 	private int lightCounter = 0;
@@ -74,6 +74,9 @@ public class TrafficLights extends Actor{
 	}
 	public Direction getLightDirection() {
 		return lightDirection;
+	}
+	public Color getColor() {
+		return color;
 	}
 	
 }
