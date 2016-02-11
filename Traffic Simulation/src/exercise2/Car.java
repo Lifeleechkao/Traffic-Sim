@@ -101,9 +101,6 @@ public class Car extends Actor implements IntersectionListener {
 				}
 
 			}
-			if (this.isAtEdge() && isAtEnd()) {
-				getWorld().removeObject(this);
-			}
 		}
 		move(currentSpeed);
 		if (this.carState == state.AT_INTERSECTION) {
@@ -131,7 +128,66 @@ public class Car extends Actor implements IntersectionListener {
 				}
 			}
 		}
+		if (this.d.ordinal() == d.WEST.ordinal()) {
+			if (this.getX() == intersection.getX() + Roads.ROAD_WIDTH / 4) {
+				int random = r.nextInt(30);
+				if (random == 15) {
+					this.turn(90);
+					this.d = d.NORTH;
+				}
+			}
+		}
+		if (this.d.ordinal() == d.WEST.ordinal()) {
+			if (this.getX() == intersection.getX() - Roads.ROAD_WIDTH / 4) {
+				int random = r.nextInt(30);
+				if (random == 10) {
+					this.turn(270);
+					this.d = d.SOUTH;
+				}
+			}
+		}
+		if (this.d.ordinal() == d.NORTH.ordinal()) {
+			if (this.getY() == intersection.getY() - Roads.ROAD_WIDTH / 4) {
+				int random = r.nextInt(30);
+				if (random == 5) {
+					this.turn(90);
+					this.d = d.EAST;
+				}
+			}
+		}
+		if (this.d.ordinal() == d.NORTH.ordinal()) {
+			if (this.getY() == intersection.getY() + Roads.ROAD_WIDTH / 4) {
+				int random = r.nextInt(30);
+				if (random == 1) {
+					this.turn(270);
+					this.d = d.WEST;
+				}
+			}
+		}
+		if (this.d.ordinal() == d.SOUTH.ordinal()) {
+			if (this.getY() == intersection.getY() + Roads.ROAD_WIDTH / 4) {
+				int random = r.nextInt(30);
+				if (random == 19) {
+					this.turn(90);
+					this.d = d.EAST;
+				}
+			}
+		}
+		if (this.d.ordinal() == d.SOUTH.ordinal()) {
+			if (this.getY() == intersection.getY() - Roads.ROAD_WIDTH / 4) {
+				int random = r.nextInt(30);
+				if (random == 2) {
+					this.turn(270);
+					this.d = d.WEST;
+				}
+			}
+		}
+		
+		if (this.isAtEdge() && isAtEnd()) {
+			getWorld().removeObject(this);
+		}
 	}
+	
 
 	public void speedUp() {
 		if (currentSpeed < fullSpeed) {
